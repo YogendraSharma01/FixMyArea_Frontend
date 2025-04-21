@@ -1,5 +1,3 @@
-
-
 {
   "name": "fixmyarea_frontend",
   "private": true,
@@ -20,9 +18,7 @@
     "react-router-dom": "^6.16.0",
     "react-spinners": "^0.13.8",
     "react-toasty": "^0.0.4",
-    "swiper": "^10.3.1",
-    "framer-motion": "^12.5.0",
-    "ogl": "^1.0.11"
+    "swiper": "^10.3.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
