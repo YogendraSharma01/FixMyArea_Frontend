@@ -53,9 +53,9 @@ const CitizenDashboard = () => {
   if (!user) return <div className="text-center mt-10">Loading...</div>;
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gray-100 p-6 pt-[100px]">
       <div className="max-w-6xl mx-auto bg-white p-6 rounded-2xl shadow-md">
-        <h1 className="text-2xl font-semibold mb-6">Welcome, Tisha!</h1>
+        <h1 className="text-2xl font-semibold mb-6">Welcome, Yogesh Jangid!</h1>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">

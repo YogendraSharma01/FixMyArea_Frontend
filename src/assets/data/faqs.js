@@ -28,15 +28,6 @@ export const faqs = [
         content:
             "Resolution time varies depending on the issue and the response of the concerned authority. Users can track the progress and receive updates through the platform.",
     },
-    {
-        question: "Is this platform available for all cities?",
-        content:
-            "Currently, we are operating in Jaipur, but we plan to expand to other areas soon.",
-    },
-    {
-        question: "How can I contact support?",
-        content:
-            "For any queries or technical issues, you can contact our support team at support@fixmyarea.com or visit the Contact Us page.",
-    },  
+
     
 ];

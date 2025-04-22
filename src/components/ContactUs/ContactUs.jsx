@@ -2,7 +2,7 @@ import React from 'react'
 
 const ContactUs = () => {
   return (
-    <div class="mt-6">
+    <div class="mt-6 pt-[80px]">
       <div class="grid sm:grid-cols-2 items-start gap-12 p-8 mx-auto max-w-4xl bg-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
         <div>
           <h1 class="text-slate-900 text-3xl font-semibold">Let's Talk</h1>

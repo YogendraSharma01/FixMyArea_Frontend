@@ -383,7 +383,7 @@ class App {
   onTouchMove(e) {
     if (!this.isDown) return
     const x = e.touches ? e.touches[0].clientX : e.clientX
-    const distance = (this.start - x) * 0.05
+    const distance = (this.start - x) * 0.02
     this.scroll.target = this.scroll.position + distance
   }
   onTouchUp() {
@@ -391,7 +391,7 @@ class App {
     this.onCheck()
   }
   onWheel() {
-    this.scroll.target += 2
+    this.scroll.target += 0.5 
     this.onCheckDebounce()
   }
   onCheck() {
@@ -469,7 +469,7 @@ class App {
 
 export default function CircularGallery({
   items,
-  bend = 3,
+  bend = 1,
   textColor = "#000000",
   borderRadius = 0.05,
   font = "bold 30px DM Sans"

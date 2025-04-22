@@ -19,7 +19,10 @@ const MunicipalDashboard = () => {
   if (!user) return <div className="text-center mt-10">Loading...</div>;
 
   return (
-    <div className="p-6 md:p-10 bg-gray-100 min-h-screen">
+    <div className=" pt-[80px]">
+
+    
+    <div className="p-6 md:p-10 bg-gray-100 min-h-screen pt-[80px]">
       <div className="bg-white p-6 rounded-2xl shadow-md space-y-6">
         {/* Top summary cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -78,7 +81,7 @@ const MunicipalDashboard = () => {
         </div>
 
         {/* Manage Departments */}
-        <div className="rounded-2xl border p-4 space-y-6 bg-white">
+        {/* <div className="rounded-2xl border p-4 space-y-6 bg-white">
           <h3 className="text-lg font-semibold">Manage Departments</h3>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="rounded-2xl border p-4">
@@ -112,7 +115,7 @@ const MunicipalDashboard = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Filters */}
         <div className="flex flex-wrap gap-4 items-center bg-white p-4 rounded-2xl">
@@ -172,6 +175,7 @@ const MunicipalDashboard = () => {
           <button className="px-3 py-1 border rounded-lg">Next</button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
