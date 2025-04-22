@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../components/Home/Home';
 // import Services from '../pages/Services';
-// import Contact from '../components/Contact/Contact';
+import ReportIssue from '../components/ReportIssue/ReportIssue';
+import ContactUs from '../components/ContactUs/ContactUs';
 import CitizenDashboard from '../components/Dashboard/CitizenDashboard';
 import MunicipalDashboard from '../components/Dashboard/MunicipalDashboard';
 import axios from 'axios';
@@ -50,8 +51,8 @@ const Routers = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
-      {/* <Route path="/services" element={<Services />} /> */}
-      {/* <Route path="/contact" element={<Contact />} /> */}
+      <Route path="/reportissue" element={<ReportIssue />} />
+      <Route path="/contact" element={<ContactUs />} />
       <Route
         path="/dashboard/citizen"
         element={

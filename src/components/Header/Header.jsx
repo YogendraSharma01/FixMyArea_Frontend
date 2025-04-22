@@ -124,20 +124,20 @@ const Header = () => {
     }
   }, []);
 
-  const handleStickyHeader = () => {
-    window.addEventListener('scroll', () => {
-      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        headerRef.current.classList.add('sticky__header');
-      } else {
-        headerRef.current.classList.remove('sticky__header');
-      }
-    });
-  };
+//   const handleStickyHeader = () => {
+//     window.addEventListener('scroll', () => {
+//       if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+//         headerRef.current.classList.add('sticky__header');
+//       } else {
+//         headerRef.current.classList.remove('sticky__header');
+//       }
+//     });
+//   };
 
-  useEffect(() => {
-    handleStickyHeader();
-    return () => window.removeEventListener('scroll', handleStickyHeader);
-  }, []);
+//   useEffect(() => {
+//     handleStickyHeader();
+//     return () => window.removeEventListener('scroll', handleStickyHeader);
+//   }, []);
 
   const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
 
@@ -214,29 +214,27 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <div>
-              <Link to="/">
-                <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
-                  <img src={userImg} className="w-full rounded-full" alt="" />
-                </figure>
-              </Link>
-            </div>
+           
+
 
             {isLoggedIn ? (
-                <div className="relative">
+                <div className="relative flex">
+                    <div className='border-2 border-red-400'>
+                        <span>Yogesh Jangid</span>
+                    </div>
                     <button
-                    onClick={toggleDropdown}
-                    className="flex items-center gap-2 bg-gray-200 py-2 px-4 text-gray-800 font-[600] rounded-[50px]"
+                        onClick={toggleDropdown}
+                        className="flex items-center gap-2 bg-gray-200 py-2 px-4 text-gray-800 font-[600] rounded-[50px]"
                     >
-                    <span>My Account</span>
-                    <svg
-                        className={`w-4 h-4 transform ${isDropdownOpen ? 'rotate-180' : ''}`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
+                        <span>My Account</span>
+                        <svg
+                            className={`w-4 h-4 transform ${isDropdownOpen ? 'rotate-180' : ''}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                        </svg>
                     </button>
                     {isDropdownOpen && (
                     <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">

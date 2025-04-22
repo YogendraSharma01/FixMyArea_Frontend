@@ -30,7 +30,7 @@ const Home = () => {
 
       <section className="hero_section pt-[60px] 2xl:h-[1024]">
         <div className="container">
-          <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between h-[75vh]">
+          <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between h-[90vh]">
             {/* ============== hero content ============== */}
             <div>
               <div className="lg:w-[570px]">
