@@ -239,6 +239,7 @@ const Header = () => {
 
           <div className="flex items-center gap-4">
             {isLoggedIn ? (
+
               <div className="relative flex">
                 <div className="flex items-center gap-4">
                   {/* Username */}
@@ -270,6 +271,7 @@ const Header = () => {
                       />
                     </svg>
                   </button>
+
                 </div>
 
                 {isDropdownOpen && (

@@ -1,22 +1,44 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { formatDistanceToNow } from 'date-fns';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const MunicipalDashboard = () => {
-  const [user, setUser] = useState(null);
+    const [user, setUser] = useState(null);
+    const [issues, setIssues] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      axios.get(`${API_BASE_URL}/auth/me`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then((response) => setUser(response.data))
-        .catch(() => localStorage.removeItem('token'));
-    }
-  }, []);
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            // Fetch user
+            axios
+                .get(`${API_BASE_URL}/auth/me`, {
+                    headers: { Authorization: `Bearer ${token}` },
+                })
+                .then((response) => setUser(response.data))
+                .catch(() => localStorage.removeItem('token'));
 
-  if (!user) return <div className="text-center mt-10">Loading...</div>;
+            // Fetch issues
+            setLoading(true);
+            axios
+                .get(`${API_BASE_URL}/issues`, {
+                    headers: { Authorization: `Bearer ${token}` },
+                    params: { page: currentPage, limit: 6 },
+                })
+                .then((response) => {
+                    setIssues(response.data.issues);
+                    setTotalPages(response.data.totalPages);
+                    setLoading(false);
+                })
+                .catch((error) => {
+                    console.error('Error fetching issues:', error);
+                    setLoading(false);
+                });
+        }
+    }, [currentPage]);
 
   return (
     <div className=" pt-[80px]">
@@ -39,46 +61,7 @@ const MunicipalDashboard = () => {
           ))}
         </div>
 
-        {/* Recent Reports Table */}
-        <div className="rounded-2xl border p-4 bg-white">
-          <h3 className="text-xl font-semibold mb-4">Recent Reports</h3>
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="text-gray-600">
-                <th className="pb-2">Issue</th>
-                <th className="pb-2">Location</th>
-                <th className="pb-2">Status</th>
-                <th className="pb-2">Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['Large potholes', 'tiger hill, sodala', 'Pending', '12/12/2024'],
-                ['Broken StreetLights', 'yuvraj house, jagatpura', 'Resolved', '12/12/2024'],
-                ['Garbage', 'Tisha house, tonk road', 'In Progress', '12/12/2024']
-              ].map(([issue, location, status, date], idx) => (
-                <tr key={idx} className="border-t">
-                  <td className="py-2">{issue}</td>
-                  <td>{location}</td>
-                  <td>
-                    <span
-                      className={`text-white px-3 py-1 rounded-full text-xs font-medium ${
-                        status === 'Pending'
-                          ? 'bg-red-400'
-                          : status === 'Resolved'
-                          ? 'bg-green-400'
-                          : 'bg-yellow-400'
-                      }`}
-                    >
-                      {status}
-                    </span>
-                  </td>
-                  <td>{date}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+
 
         {/* Manage Departments */}
         {/* <div className="rounded-2xl border p-4 space-y-6 bg-white">
@@ -99,23 +82,125 @@ const MunicipalDashboard = () => {
                       style={{ width: `${percent}%` }}
                     ></div>
                   </div>
-                </div>
-              ))}
-            </div>
 
-            <div className="rounded-2xl border p-4">
-              <h4 className="font-semibold mb-2">Response Time By Departments</h4>
-              <div className="text-center h-40 flex items-end justify-around">
-                {['Road Dept', 'Lighting', 'Garbage'].map((dept, idx) => (
-                  <div key={idx} className="flex flex-col items-center">
-                    <div className="w-4 bg-gray-400 rounded-t-md" style={{ height: `${50 + idx * 20}px` }}></div>
-                    <span className="text-sm mt-1">{dept}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div> */}
+    const handlePageChange = (page) => {
+        if (page >= 1 && page <= totalPages) {
+            setCurrentPage(page);
+        }
+    };
+
+    if (!user || loading) return <div className="text-center mt-10">Loading...</div>;
+
+    return (
+        <div className="p-6 md:p-10 bg-gray-100 min-h-screen">
+            <div className="bg-white p-6 rounded-2xl shadow-md space-y-6">
+                {/* Top summary cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {['Total Reports', 'Resolved Issues', 'Pending Issues', 'Response Time'].map((title, idx) => (
+                        <div
+                            key={idx}
+                            className="border p-4 rounded-2xl shadow-sm text-center bg-gray-50"
+                        >
+                            <h4 className="text-lg font-semibold">{title}</h4>
+                            <p className="text-sm text-gray-500">
+                                Status for the {title.toLowerCase()} based on the past month report
+                            </p>
+                        </div>
+                    ))}
+
+                </div>
+
+                {/* Recent Reports Table */}
+                <div className="rounded-2xl border p-4 bg-white">
+                    <h3 className="text-xl font-semibold mb-4">Recent Reports</h3>
+                    <table className="w-full text-left border-collapse">
+                        <thead>
+                            <tr className="text-gray-600">
+                                <th className="pb-2">Issue</th>
+                                <th className="pb-2">Location</th>
+                                <th className="pb-2">Status</th>
+                                <th className="pb-2">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {issues.map((issue) => (
+                                <tr key={issue._id} className="border-t">
+                                    <td className="py-2">{issue.issueTitle}</td>
+                                    <td>{issue.address}</td>
+                                    <td>
+                                        <span
+                                            className={`text-white px-3 py-1 rounded-full text-xs font-medium ${issue.status === 'Pending'
+                                                ? 'bg-red-400'
+                                                : issue.status === 'Resolved'
+                                                    ? 'bg-green-400'
+                                                    : 'bg-yellow-400'
+                                                }`}
+                                        >
+                                            {issue.status}
+                                        </span>
+                                    </td>
+                                    <td>{new Date(issue.createdAt).toLocaleDateString()}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+
+                {/* Manage Departments */}
+                <div className="rounded-2xl border p-4 space-y-6 bg-white">
+                    <h3 className="text-lg font-semibold">Manage Departments</h3>
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                        <div className="rounded-2xl border p-4">
+                            <h4 className="font-semibold mb-2">Issued By Categories</h4>
+                            {[
+                                ['Road Issues', 45],
+                                ['Lightings', 25],
+                                ['Garbage', 30]
+                            ].map(([label, percent], idx) => (
+                                <div key={idx} className="mb-2">
+                                    <p className="text-sm">{label}</p>
+                                    <div className="w-full bg-gray-200 rounded-full h-2">
+                                        <div
+                                            className="bg-yellow-500 h-2 rounded-full"
+                                            style={{ width: `${percent}%` }}
+                                        ></div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="rounded-2xl border p-4">
+                            <h4 className="font-semibold mb-2">Response Time By Departments</h4>
+                            <div className="text-center h-40 flex items-end justify-around">
+                                {['Road Dept', 'Lighting', 'Garbage'].map((dept, idx) => (
+                                    <div key={idx} className="flex flex-col items-center">
+                                        <div className="w-4 bg-gray-400 rounded-t-md" style={{ height: `${50 + idx * 20}px` }}></div>
+                                        <span className="text-sm mt-1">{dept}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Filters */}
+                <div className="flex flex-wrap gap-4 items-center bg-white p-4 rounded-2xl">
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        className="border p-2 rounded-md flex-grow"
+                    />
+                    <select className="border p-2 rounded-md">
+                        <option>All Types</option>
+                    </select>
+                    <select className="border p-2 rounded-md">
+                        <option>All Status</option>
+                    </select>
+                    <select className="border p-2 rounded-md">
+                        <option>All Priority</option>
+                    </select>
+                </div>
+
 
         {/* Filters */}
         <div className="flex flex-wrap gap-4 items-center bg-white p-4 rounded-2xl">
@@ -178,6 +263,7 @@ const MunicipalDashboard = () => {
     </div>
     </div>
   );
+
 };
 
 export default MunicipalDashboard;

@@ -3,20 +3,18 @@
     width: 200px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-/* Existing styles */
 .header {
   @apply w-full bg-white;
-  @apply fixed top-0 left-0 w-full bg-white shadow-md z-50;
+  @apply sticky top-0 left-0 w-full bg-white shadow-md z-50;
   
 }
-
+/* 
 .sticky__header {
   @apply fixed top-0 left-0 w-full bg-white shadow-md z-50;
 }
 
 .container {
-  @apply max-w-[1200px] mx-auto px-4;
+  @apply relative max-w-[1200px] mx-auto px-4;
 }
 
 .logoo img {
@@ -39,7 +37,7 @@
   @apply text-gray-700;
 }
 
-/* Mobile menu */
+
 .show__menu {
   @apply block;
 }
@@ -56,7 +54,6 @@
   }
 }
 
-/* Modal styles */
 .modal-content {
   @apply bg-white rounded-lg shadow-lg max-w-md mx-auto mt-20;
-}
+}  */
