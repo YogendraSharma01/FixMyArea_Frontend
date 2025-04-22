@@ -1,13 +1,12 @@
 //import React from 'react'
-
 import heroImg01 from "../../assets/images/hero-img01.png";
 import heroImg02 from "../../assets/images/hero-img02.png";
 import heroImg03 from "../../assets/images/hero-img03.png";
 import icon01 from "../../assets/images/icon01.png";
 import icon02 from "../../assets/images/icon02.png";
 import icon03 from "../../assets/images/icon03.png";
-import featureImg from "../../assets/images/feature-img.png";
-import faqImg from "../../assets/images/faq-img.png";
+import featureImg from "../../assets/images/feature-img.jpg";
+import faqImg from "../../assets/images/faq-img.jpg";
 import videoIcon from "../../assets/images/video-icon.png";
 import avatarIcon from "../../assets/images/avatar-icon.png";
 import { Link } from "react-router-dom";
@@ -31,11 +30,10 @@ const Home = () => {
 
       <section className="hero_section pt-[60px] 2xl:h-[1024]">
         <div className="container">
-          <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between">
+          <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between h-[75vh]">
             {/* ============== hero content ============== */}
             <div>
               <div className="lg:w-[570px]">
-                
                 <div className="text-center">
                   <SplitText
                     text="Your City, Your Responsibility"
@@ -74,10 +72,8 @@ const Home = () => {
                   />
                 </div>
                 <div className="flex">
-
-                <button className="btn ml-[180px]">Report an Issue</button>
+                  <button className="btn ml-[180px]">Report an Issue</button>
                 </div>
-
               </div>
               {/* ============== hero counter ============== */}
               <div className="mt-[30px] lg:mt-[70px] flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-[30px]">
@@ -221,68 +217,80 @@ const Home = () => {
       <br />
       <section>
         <div className="container">
-          <div className="flex items-center justify-between flex-col lg:flex-row">
+          <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between ml-20 mr-20  bg-cover bg-center bg-no-repeat">
+            {" "}
             {/* ============== Feature content ============== */}
             <div className="xl:w-[670px]">
-              <h2 className="heading  m-6">
-                Transform Your Area
-                <br /> Today
-              </h2>
+              <h2 className="heading  m-6 ">Transform Your Area Today</h2>
+
               <ul className="pl-4">
-                <li className="text__para mb-3">
-                  {" "}
-                  Identify Problems – Report potholes, broken streetlights,
-                  water leaks, and more.
+                <li className="text__para mb-3 flex items-center gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="h-6 w-6 flex-shrink-0"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
+                    />
+                  </svg>
+                  <span>
+                    Identify Problems – Report potholes, broken streetlights,
+                    water leaks, and more.
+                  </span>
                 </li>
-                <li className="text__para mb-3">
-                  Engage & Collaborate – Upvote and comment on existing reports.
+                <li className="text__para mb-3 flex items-center gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="h-6 w-6 flex-shrink-0"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
+                    />
+                  </svg>
+                  <span>
+                    Engage & Collaborate – Upvote and comment on existing
+                    reports.
+                  </span>
                 </li>
-                <li className="text__para">
-                  Track Progress – Stay updated on fixes and improvements.
+                <li className="text__para mb-3 flex items-center gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="h-6 w-6 flex-shrink-0"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
+                    />
+                  </svg>
+                  <span>
+                    Track Progress – Stay updated on fixes and improvements.
+                  </span>
                 </li>
               </ul>
               <Link to="/">
                 <button className="btn ml-3">Learn More</button>
               </Link>
             </div>
-
             {/* ============== Feature img ============== */}
-            <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0">
-              <img src={featureImg} className="w-3/4" alt="" />
-              <div
-                className="w-[150px] lg:w-[248px] bg-white absolute bottom-[50px] left-0 md:bottom-[100px]
-              md:left-5 z-20 p-2 pb-3 lg:pt-4 lg:px-4 lg:pb-[26px] rounded-[10px]"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-[6px] lg:gap-3">
-                    <p className="text-[10px] leading-[10px] lg:text-[14px] lg:leading-5 text-black font-[600]">
-                      Tue, 24
-                    </p>
-                    <p className="text-[10px] leading-[10px] lg:text-[14px] lg:leading-5 text-textColor font-[400]">
-                      10:00AM
-                    </p>
-                  </div>
-                  <span
-                    className="w-5 h-5 lg:w-[34px] lg:h-[34px] flex items-center justify-center bg-yellow-300
-                  rounded py-1 px-[6px] lg:py-3 lg:px-[9px]"
-                  >
-                    <img src={videoIcon} alt="" />
-                  </span>
-                </div>
-
-                <div
-                  className="w-[65px] lg:w-[96px] bg-[#CCF0F3] py-1 px-2 lg:py-[6px] lg:px-[10px] text-8px
-                leading-[8px] lg:text-[12px] lg:leading-4 text-[#246BCE] font-[500] mt-2 lg:mt-4 rounded-full"
-                >
-                  Consultation
-                </div>
-                <div className="flex items-center gap-[6px] lg:gap-[10px] mt-2 lg:mt-[18px]">
-                  <img src={avatarIcon} alt="" />
-                  <h4 className="text-[10px] leading-3 lg:text-[16px] lg:leading-[22px] font-[700] text-textColor">
-                    Wayne Collins
-                  </h4>
-                </div>
-              </div>
+            <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0 ">
+              <img src={featureImg} className="w-3/4 rounded-lg" alt="" />
             </div>
           </div>
         </div>
@@ -337,10 +345,6 @@ const Home = () => {
               {" "}
               What our community says
             </h2>
-            <p className="text__para text-center mb-4">
-              Word-class care for everyone. Our health system offers unmatched,
-              expert health care.
-            </p>
           </div>
           <Testimonial />
         </div>

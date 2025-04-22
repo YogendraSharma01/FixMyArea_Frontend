@@ -7,13 +7,20 @@ import Home from '../components/Home/Home'
 // import DoctorDetails from '../pages/Doctors/DoctorDetails';
 
 import { Routes, Route } from 'react-router-dom'
-
+import ReportIssue from '../components/ReportIssue/ReportIssue'
+import AdminDashboard from '../components/Admin/AdminDashboard'
+import UserDashboard from '../components/User/UserDashboard'
+import ContactUs from '../components/ContactUs/ContactUs'
 
 const Routers = () => {
     return <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
-        {/* <Route path='/doctors' element={<Doctors />} /> */}
+        <Route path='/reportissue' element={<ReportIssue />} />
+        <Route path='/admin' element={<AdminDashboard />} />
+        <Route path='/dashboard' element={<UserDashboard />} />
+        <Route path='/contactus' element={<ContactUs />} />
+
         {/* <Route path='/doctors/:id' element={<DoctorDetails />} /> */}
         {/* <Route path='/login' element={<Login />} />
         <Route path='/contact' element={<Contact />} />
