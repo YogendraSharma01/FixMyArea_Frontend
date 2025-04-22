@@ -5,7 +5,7 @@ import Footer from '../components/Footer/Footer';
 import Routers from '../routes/Routers';
 
 
-const layout = () => {
+const Layout = () => {
   return (
    <>
           <Header />
@@ -17,4 +17,5 @@ const layout = () => {
   )
 }
 
-export default layout
+export default Layout
+

@@ -2,3 +2,59 @@
     height: auto;
     width: 200px;
 }
+
+
+/* Existing styles */
+.header {
+  @apply w-full bg-white;
+}
+
+.sticky__header {
+  @apply fixed top-0 left-0 w-full bg-white shadow-md z-50;
+}
+
+.container {
+  @apply max-w-[1200px] mx-auto px-4;
+}
+
+.logoo img {
+  @apply h-12;
+}
+
+.navigation {
+  @apply flex;
+}
+
+.menu {
+  @apply list-none;
+}
+
+.text-primaryColor {
+  @apply text-blue-500;
+}
+
+.text-textColor {
+  @apply text-gray-700;
+}
+
+/* Mobile menu */
+.show__menu {
+  @apply block;
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    @apply hidden;
+  }
+  .show__menu {
+    @apply block absolute top-16 left-0 w-full bg-white shadow-md;
+  }
+  .menu {
+    @apply flex-col gap-4 p-4;
+  }
+}
+
+/* Modal styles */
+.modal-content {
+  @apply bg-white rounded-lg shadow-lg max-w-md mx-auto mt-20;
+}
